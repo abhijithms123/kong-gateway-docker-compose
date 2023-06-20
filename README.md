@@ -28,7 +28,7 @@
            KONG_DECLARATIVE_CONFIG: "/opt/kong/kong.yaml"
            KONG_PLUGINS: bundled,kong-jwt2header
  4.Run the docker container.
-       $ docker compose up
+          $ docker compose up
      
      
    
