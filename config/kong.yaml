@@ -1,2 +1,62 @@
- _format_version: "3.0"
- _transform: true
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: appone
+    url: http://host.docker.internal:8081
+    routes:
+      - name: appone-route
+        paths:
+          - /appone
+  - name: apptwo
+    url: http://host.docker.internal:8082
+    routes:
+      - name: apptwo-route
+        paths:
+          - /apptwo
+  - name: appthree
+    url: http://host.docker.internal:8082
+    routes:
+      - name: appthree-route
+        paths:
+          - /appthree
+
+consumers:
+  - username: my-user
+
+jwt_secrets:
+  - algorithm: HS256
+    consumer: my-user
+    key: kungfupandais110%fit
+    secret: yoursecretissafe100%
+
+plugins:
+  - name: jwt
+    config:
+      # claims_to_verify: 
+      #   - exp
+      key_claim_name: kid
+
+
+
+  # - name: request-transformer
+  #   config:
+  #     add:
+  #       headers:
+  #         - tenant:value
+  #         - user:something
+  #         - transactionId: something
+  #         - roles: [role1,role2,role3]
+
+  - name: rate-limiting
+    config:
+      second: 5
+      minute: 10
+      hour: 1000
+      policy: local
+
+
+
+
+  
+ 
