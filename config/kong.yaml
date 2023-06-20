@@ -1,4 +1,4 @@
-_format_version: "3.0"
+_format_version: "2.1"
 _transform: true
 
 services:
@@ -15,7 +15,7 @@ services:
         paths:
           - /apptwo
   - name: appthree
-    url: http://host.docker.internal:8082
+    url: http://host.docker.internal:8083
     routes:
       - name: appthree-route
         paths:
@@ -31,22 +31,15 @@ jwt_secrets:
     secret: yoursecretissafe100%
 
 plugins:
+  - name: kong-jwt2header
+    enabled: true
+    config:
+      strip_claims: "false"
+      token_required: "false"
+
   - name: jwt
     config:
-      # claims_to_verify: 
-      #   - exp
       key_claim_name: kid
-
-
-
-  # - name: request-transformer
-  #   config:
-  #     add:
-  #       headers:
-  #         - tenant:value
-  #         - user:something
-  #         - transactionId: something
-  #         - roles: [role1,role2,role3]
 
   - name: rate-limiting
     config:

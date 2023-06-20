@@ -53,7 +53,7 @@ services:
   #   restart: on-failure
 
   kong:
-    image: "${KONG_DOCKER_TAG:-kong:latest}"
+    image: my-custom-kong-image
     user: "${KONG_USER:-kong}"
     environment:
       <<: *kong-env
@@ -65,6 +65,7 @@ services:
       KONG_PROXY_ERROR_LOG: /dev/stderr
       KONG_PREFIX: ${KONG_PREFIX:-/var/run/kong}
       KONG_DECLARATIVE_CONFIG: "/opt/kong/kong.yaml"
+      KONG_PLUGINS: bundled,kong-jwt2header
     # secrets:
     #   - kong_postgres_password
     networks:
