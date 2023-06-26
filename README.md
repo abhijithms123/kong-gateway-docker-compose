@@ -28,9 +28,10 @@
            KONG_DECLARATIVE_CONFIG: "/opt/kong/kong.yaml"
            KONG_PLUGINS: bundled,kong-jwt2header
  4.Run the docker container.
+ 
           $docker compose up
 
-          #to set up konga
+to set up konga
 
 1. add the konga image to the docker compose file.
    
