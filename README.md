@@ -56,9 +56,9 @@
    
 3. build the container
    
-     $docker compose up -d
+        $docker compose up -d
 
-         #setting up KONGA.
+#setting up KONGA.
 
    1.create an admin
    
