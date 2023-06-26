@@ -58,12 +58,16 @@
    
      $docker compose up -d
 
-#setting up KONGA.
-  1.create an admin
+         #setting up KONGA.
+
+   1.create an admin
+   
   2.sign in with the admin credentials
+  
   3.add a connection to the admin api.
-     set the url of the connection as: http://kong:8001
-     since both the containers are in the same network("kong-net") the container name is given as the host.
+  
+    .set the url of the connection as: http://kong:8001
+    .since both the containers are in the same network("kong-net") the container name is given as the host.
 
 
 
