@@ -20,6 +20,11 @@ services:
       - name: appthree-route
         paths:
           - /appthree
+  # - name: admin-api
+  #   url: http://localhost:8001
+  #   routes:
+  #     - paths:
+  #         - /admin-api
 
 consumers:
   - username: my-user
@@ -34,7 +39,7 @@ plugins:
   - name: kong-jwt2header
     enabled: true
     config:
-      strip_claims: "false"
+      strip_claims: "true"
       token_required: "false"
 
   - name: jwt

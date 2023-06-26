@@ -96,6 +96,26 @@ services:
     security_opt:
       - no-new-privileges
 
+  konga:
+    image: pantsel/konga
+    environment:
+      # TOKEN_SECRET: ${KONGA_TOKEN_SECRET}
+      # DB_ADAPTER: ${KONG_DATABASE}
+      # DB_HOST: ${KONGA_DB_HOST}
+      # DB_PORT: ${KONGA_DB_PORT}
+      # DB_DATABASE: ${KONGA_DB_NAME}
+      # DB_USER: ${KONGA_DB_USERNAME}
+      # DB_PASSWORD: ${KONGA_DB_PASSWORD}
+      # NODE_ENV: ${KONGA_ENV}
+      KONGA_HOOK_TIMEOUT: 10000
+    restart: on-failure
+    ports:
+      - 9000:1337
+    # depends_on:
+    # - db
+    networks:
+      - kong-net
+
   # db:
   #   image: postgres:9.5
   #   profiles: ["database"]
